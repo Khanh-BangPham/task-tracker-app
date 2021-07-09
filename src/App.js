@@ -10,14 +10,14 @@ import About from './components/About';
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([])
-  useEffect(() => {
-    const getTasks = async () => {
-      const tasksFromServer = await fetchTasks()
-      setTasks(tasksFromServer)
-    }
+  // useEffect(() => {
+  //   const getTasks = async () => {
+  //     const tasksFromServer = await fetchTasks()
+  //     setTasks(tasksFromServer)
+  //   }
 
-    getTasks()
-  }, [])
+  //   getTasks()
+  // }, [])
   // Fetch Tasks
   // const fetchTasks = async () => {
   //   const res = await fetch('http://localhost:5000/tasks')
@@ -49,24 +49,24 @@ function App() {
 
   // Toggle Reminder
 
-  const toggleReminder = async (id) => {
-    const taskToggleReminder = await fetchTask(id);
-    const updTask = { ...taskToggleReminder, reminder: !taskToggleReminder.reminder }
+  // const toggleReminder = async (id) => {
+  //   // const taskToggleReminder = await fetchTask(id);
+  //   const updTask = { ...taskToggleReminder, reminder: !taskToggleReminder.reminder }
 
-    // const res = await fetch(`http://localhost:5000/tasks/${id}`, {
-    //   method: 'PUT',
-    //   headers: { 'Content-Type': 'application/json', },
-    //   body: JSON.stringify(updTask),
-    // })
+  //   // const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+  //   //   method: 'PUT',
+  //   //   headers: { 'Content-Type': 'application/json', },
+  //   //   body: JSON.stringify(updTask),
+  //   // })
 
-    // const data = await res.json()
+  //   // const data = await res.json()
 
-    setTasks(tasks.map((task) =>
-      task.id === id ? {
-        ...task, reminder: data.reminder
-      } : task
-    ))
-  }
+  //   setTasks(tasks.map((task) =>
+  //     task.id === id ? {
+  //       ...task, reminder: data.reminder
+  //     } : task
+  //   ))
+  // }
 
   // Add Task
   const addTask = (task) => {
@@ -91,7 +91,7 @@ function App() {
           render={(props) => (
             <>
               {showAddTask ? <AddTask onAdd={addTask} /> : ''}
-              {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} /> : <p>Hãy thêm công việc</p>}
+              {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} /*onToggle={toggleReminder}*/ /> : <p>Hãy thêm công việc</p>}
             </>
           )} />
         <Route path='/about' component={About} />
